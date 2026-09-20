@@ -8,19 +8,20 @@
 
 本仓库只包含代码和文档，**不包含任何数据**。数据版权归各发布机构所有。
 
-> 状态：进行中。连接器逐个加入，通过实测后在下表标记。
-
 ## 连接器
 
-| 数据源 | 目录 | 提供什么 | 是否需要 key | 状态 |
-|---|---|---|---|---|
-| ECB Data Portal | `connectors/ecb/` | 政策利率、市场利率、欧元区企业贷款利率、欧元参考汇率 | 否 | 计划中 |
-| Bank of England IADB | `connectors/boe/` | Bank Rate、SONIA、企业贷款利率 | 否 | 计划中 |
-| CSO PxStat（爱尔兰） | `connectors/cso/` | 就业、收入、劳动力成本、职位空缺、规划许可 | 否 | 计划中 |
-| ONS 时间序列（英国） | `connectors/ons/` | RPI、CPI、CPIH、PPI、收入、职位空缺 | 否 | 计划中 |
-| ONS PPI 数据集 + DBT/BIST 建材统计 | `connectors/uk-materials/` | 建材价格指数，停发序列用官方代用指数续接 | 否 | 计划中 |
-| Met Éireann | `connectors/met-eireann/` | 各气象站月度气候数据 | 否 | 计划中 |
-| ENTSO-E Transparency Platform | `connectors/entsoe/` | 爱尔兰 SEM 日前电价、负荷、发电结构 | **是（免费 token）** | 计划中 |
+| 数据源 | 目录 | 提供什么 | 是否需要 key |
+|---|---|---|---|
+| ECB Data Portal | `connectors/ecb/` | 政策利率、市场利率、欧元区与各国企业贷款利率、欧元参考汇率 | 否 |
+| Bank of England IADB | `connectors/boe/` | Bank Rate、SONIA、企业贷款利率 | 否 |
+| CSO PxStat（爱尔兰） | `connectors/cso/` | 任意 PxStat 表：收入、劳动力成本、职位空缺、规划许可、批发价格指数 | 否 |
+| ONS 时间序列（英国） | `connectors/ons/` | 按 CDID 取 RPI、CPI、CPIH、生产者价格、收入、职位空缺 | 否 |
+| 英国建材指数（DBT，经 GOV.UK） | `connectors/uk-materials/` | 月度建材价格指数，通过 GOV.UK Content API 定位当期文件 | 否 |
+| Met Éireann | `connectors/met-eireann/` | 各气象站月度气候数据，含官方发布的采暖度日数 | 否 |
+| ENTSO-E Transparency Platform | `connectors/entsoe/` | 日前电价、负荷、分机组类型发电 | **是（免费 token）** |
+
+每个目录下都有一份 README，写明端点、返回结构、示例用的序列，以及该数据源自己的坑。
+上表中的端点都在 2026-09-20 用 `tools/probe_endpoints.py` 实际调过；ENTSO-E 除外，因为探测它需要 token。
 
 ## 文档
 

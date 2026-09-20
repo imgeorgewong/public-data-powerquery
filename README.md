@@ -8,19 +8,21 @@ central-bank rates and FX, national statistics, construction material price indi
 Each connector is plain `.m` text: paste it into Power Query's Advanced Editor and refresh.
 The repository contains code and documentation only — **no data**. Data copyright belongs to each publisher.
 
-> Status: work in progress. Connectors are added one at a time and marked below once tested.
-
 ## Connectors
 
-| Source | Folder | What it returns | Key needed | Status |
-|---|---|---|---|---|
-| ECB Data Portal | `connectors/ecb/` | Policy and market rates, euro-area lending rates, FX reference rates | No | planned |
-| Bank of England IADB | `connectors/boe/` | Bank Rate, SONIA, corporate lending rates | No | planned |
-| CSO PxStat (Ireland) | `connectors/cso/` | Earnings, labour costs, vacancies, planning permissions | No | planned |
-| ONS time series (UK) | `connectors/ons/` | RPI, CPI, CPIH, PPI, earnings, vacancies | No | planned |
-| ONS PPI dataset + DBT/BIST building materials | `connectors/uk-materials/` | Construction material price indices, with proxy extension of discontinued series | No | planned |
-| Met Éireann | `connectors/met-eireann/` | Monthly station climate data | No | planned |
-| ENTSO-E Transparency Platform | `connectors/entsoe/` | Irish SEM day-ahead prices, load, generation mix | **Yes (free token)** | planned |
+| Source | Folder | What it returns | Key needed |
+|---|---|---|---|
+| ECB Data Portal | `connectors/ecb/` | Policy and market rates, euro-area and national lending rates, FX reference rates | No |
+| Bank of England IADB | `connectors/boe/` | Bank Rate, SONIA, corporate lending rates | No |
+| CSO PxStat (Ireland) | `connectors/cso/` | Any PxStat table: earnings, labour costs, vacancies, planning permissions, wholesale prices | No |
+| ONS time series (UK) | `connectors/ons/` | RPI, CPI, CPIH, producer prices, earnings, vacancies, by CDID | No |
+| UK construction materials (DBT via GOV.UK) | `connectors/uk-materials/` | Monthly material price indices, resolved through the GOV.UK Content API | No |
+| Met Éireann | `connectors/met-eireann/` | Monthly station climate data, including published heating degree days | No |
+| ENTSO-E Transparency Platform | `connectors/entsoe/` | Day-ahead prices, load, generation by production type | **Yes (free token)** |
+
+Each folder has a README with the endpoint, the response shape, the series used as examples,
+and that source's own traps. Every endpoint above was called on 2026-09-20 with
+`tools/probe_endpoints.py`; ENTSO-E is the exception, because probing it needs a token.
 
 ## Documentation
 
