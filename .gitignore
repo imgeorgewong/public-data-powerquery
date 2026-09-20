@@ -19,3 +19,9 @@ local_config.*
 .DS_Store
 .idea/
 .vscode/
+
+# --- Python (tooling scripts) ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/

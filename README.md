@@ -1,5 +1,7 @@
 # public-data-powerquery
 
+**English** | [中文](README.zh-CN.md)
+
 Excel Power Query (M) connectors for free, official economic and statistical data sources:
 central-bank rates and FX, national statistics, construction material price indices, weather and electricity market data.
 
@@ -53,6 +55,17 @@ Before making the repository public, also run the full scan:
 ```
 python3 tools/check_sensitive.py --all
 ```
+
+A second script checks that the endpoints behind the connectors still answer, and prints
+row counts, real first/last observation dates and the last value:
+
+```
+python3 tools/probe_endpoints.py          # all sources
+python3 tools/probe_endpoints.py ecb      # one source group
+```
+
+It flags series that answer HTTP 200 while their data has stopped updating — something a
+status code alone never shows.
 
 ## Related
 
